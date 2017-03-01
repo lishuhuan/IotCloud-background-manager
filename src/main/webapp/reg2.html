@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+    <title>
+        注册信息
+    </title>
+    <link href="lib/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/css/font-awesome.min.css" rel="stylesheet">
+    <script src="lib/js/jquery-2.1.4.min.js">
+    </script>
+    <script src="lib/js/jquery.form.min.js">
+    </script>
+    <script src="lib/js/bootstrap.min.js">
+    </script>
+    <script src="lib/js/jquery.noty.packaged.min.js">
+    </script>
+
+    <link href="css/style.css" rel="stylesheet">
+    
+    <style type="text/css">
+        .mailfm{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class='header'>
+        <div class="grid h-top">
+            <font class="hfont">极动云开发者中心</font>
+            <div class="info fr clearfix">
+                <a href="#" class="a-style fl" id="main">首页</a>
+                <a href="#" class="a-style fl" id="developGuid">开发指引</a>
+                <a href="#" class="a-style fl" id="joinUs">加入我们</a>
+                <a href="#" class="a-style fl hdselectid" id="reg">登录/注册</a>
+            </div>
+        </div> 
+    </div>
+    <div class="grid regMain" style="margin-top:30px;">
+        <div>
+        <a href="#" id="person">个人注册 </a><font style="padding:5px;">|</font><a id="company" href="#" class="aselected"> 企业注册</a>
+        </div>
+        <br>
+    <!-- 企业注册 -->
+        <form action="#" method="post" class="regfm">
+            <div>
+                <label class="fl" for="phone" style="margin-right:40px;">手机号:</label>
+                    <div class="username"></div>
+            </div>
+            <div class="cb" style="height:30px;"></div>
+            <div>
+                <label class="fl" for="setCode">设置密码:</label>
+                <input type="password" style="border:1px solid rgba(0,0,0,.3);outline:none; height:30px; line-height:30px; margin-left:40px; width:240px;" class="setCode" name="setCode" id="setCode"/>
+                <font class="f-warning" id="set"></font>
+            </div>
+            <div class="cb" style="height:30px;"></div>
+            <div>
+                <label class="fl" for="insure">确认密码:</label>
+                <input type="password" style="border:1px solid rgba(0,0,0,.3);outline:none; height:30px; line-height:30px; margin-left:40px; width:240px;" class="insure" name="insure" id="insure"/>
+                <font class="f-warning" id="insuremsg"></font>
+            </div>
+
+            <div class="cb" style="height:30px;"></div>
+            <div>
+                <label class="fl" for="cMail">企业邮箱:</label>
+                <input type="emails" style="border:1px solid rgba(0,0,0,.3);outline:none; height:30px; line-height:30px; margin-left:40px; width:240px;" name="cMail" id="cMail"/>
+            </div>
+
+            <div class="cb" style="height:30px;"></div>
+            
+        </form>
+<!-- 个人注册 -->
+        <form action="#" method="post" class="mailfm">
+           <div>
+                <label class="fl" for="phone" style="margin-right:40px;">手机号:</label>
+                    <div class="username"></div>
+            </div>
+            <div class="cb" style="height:30px;"></div>
+            <div>
+                <label class="fl" for="setCode">设置密码:</label>
+                <input type="password" style="border:1px solid rgba(0,0,0,.3);outline:none; height:30px; line-height:30px; margin-left:40px; width:240px;" class="setCode" name="setCode" id="setCode1"/>
+                <font class="f-warning" id="set1"></font>
+            </div>
+            <div class="cb" style="height:30px;"></div>
+            <div>
+                <label class="fl" for="insure">确认密码:</label>
+                <input type="password" style="border:1px solid rgba(0,0,0,.3);outline:none; height:30px; line-height:30px; margin-left:40px; width:240px;" class="insure" name="insure" id="insure1"/>
+                <font class="f-warning" id="insuremsg1"></font>
+            </div>
+
+            <div class="cb" style="height:30px;"></div>
+            <div>
+                <label class="fl" for="pMail">个人邮箱:</label>
+                <input type="email" style="border:1px solid rgba(0,0,0,.3);outline:none; height:30px; line-height:30px; margin-left:40px; width:240px;" name="pMail" id="pMail"/>
+            </div>
+            <div class="cb"></div>
+        </form>
+            
+            <div class="fc">
+                <input type="button" style="width:240px; margin-top:35px; margin-bottom:40px; margin-left:100px;" value="下一步" id="nextPage">
+                <a href="sign.html">已有帐号？马上登录</a>
+            </div>
+        
+    </div>
+</body>
+<script src="js/main.js"></script>
+<script type="text/javascript">
+    var username = GetQueryString("phoneNumber");
+    var mima1 = 2;
+    var mima2 = 2;
+    var email1= 2;
+    var email2= 2;
+    var mi1   = 2;
+    var mi2   = 2;
+    var state = 1;
+    var url ="";
+    var Domain_Name =Domain_Name();
+    var userT ="";
+    $('.username').text(username);
+    $("#nextPage").click(function() {
+        /* ajax请求代码待添加，请求成功后跳转 */
+        switch (state) {
+            case 1:
+                if (mima1 == 1&&mi1 ==1 && email1 == 1) {
+                    //location.href="companyInfo.html"; 
+                    url = "url1";
+                    denglu(1);
+                }else{
+                    alert("有未填项或格式不正确");
+                }
+                break;
+            case 2:
+                if (mima2 == 1&&mi2 == 1 && email2 == 1) {
+                    //location.href="companyInfo.html";
+                    url = "url2";
+                    denglu(2);
+                }else{
+                    alert("有未填项或格式不正确");
+                }
+                break;
+            default:
+                alert('nextpage false');
+                break;
+        }        
+    });
+    function denglu(a){
+        var email = "";
+        var password = "";
+        var userType = "";
+        switch (a) {
+            case 1:
+                password = $("#setCode").val();
+                email = $('#cMail').val();
+                userType = 1;
+                userT =1;
+                break;
+            case 2:
+                password = $('#setCode1').val();
+                email = $('#pMail').val();
+                userType = 0;
+                userT =0;
+                break;
+            default:
+                alert("状态错误");// statements_def
+                break;
+        }
+        console.log(password,email);
+        $.ajax({
+            url: Domain_Name+'/IotCloud-background-manager/rest/user/register',
+            //url: 'php/curl.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                username : username,
+                password : password,
+                email    : email,
+                userType : userType
+            },
+            success:function(a){
+                var data = eval(a);
+                console.log(data);
+                if (data.result_code==0) {
+                    if (userT == 1) {
+                        location.href = "companyInfo.html?phoneNumber="+username;
+                    }else {
+                       alert("个人注册成功"); 
+                       location.href = "https://www.baidu.com/";
+                    }
+                }else {
+                    alert('请求失败');
+                }
+
+            }
+        })
+    }
+
+    $('.regMain > div >a').click(function() {
+        $('.regMain > div a').removeClass('aselected');
+        $(this).addClass('aselected');
+        if ($(this).attr('id')=='person'){
+            $('.regfm').hide('fast',function(){
+                $('.mailfm').show('fast');
+            });
+            state =2;
+        }
+        else{
+            $('.mailfm').hide('fast',function(){
+                $('.regfm').show('fast');
+            });
+            state=1;
+        }
+    });
+
+
+
+    $('#insure').change(function() {
+        /* Act on the event */
+        var pass1 = $('#setCode').val();
+        var pass2 = $('#insure').val();
+        if (pass2 == pass1){
+            $('#insuremsg').css('color', 'green');
+            $('#insuremsg').text('验证成功');
+            mi1 = 1;
+
+        }else{
+            $('#insuremsg').css('color', 'red');
+            $('#insuremsg').text('两次密码不一致');
+            mi1 = 2;
+        }
+    });
+    $('#insure1').change(function() {
+        /* Act on the event */
+        var pass1 = $('#setCode1').val();
+        var pass2 = $('#insure1').val();
+        if (pass2 == pass1){
+            $('#insuremsg1').css('color', 'green');
+            $('#insuremsg1').text('验证成功');
+            mi2 = 1;
+            
+        }else{
+            $('#insuremsg1').css('color', 'red');
+            $('#insuremsg1').text('两次密码不一致');
+            mi2 = 2;
+        }
+    });
+
+    $('#setCode').change(function() {
+        /* Act on the event */
+        if ($('#setCode').val().length < 6) {
+            $('#set').css('color', 'red');
+            $('#set').text('密码不小于6位');
+            mima1 = 2;
+        }else{
+            $('#set').empty();
+            mima1 = 1;
+        }
+    });
+    $('#setCode1').change(function() {
+        /* Act on the event */
+        if ($('#setCode1').val().length < 6) {
+            $('#set1').css('color', 'red');
+            $('#set1').text('密码不小于6位');
+            mima2 = 2;
+        }else{
+            $('#set1').empty();
+            mima2 = 1;
+        }
+    });
+    $("#cMail").change(function() {
+        /* Act on the event */
+        email1 = testMail("cMail","nextPage");
+    });
+    $("#pMail").change(function() {
+        /* Act on the event */
+        email2 = testMail("pMail","nextPage");
+    });
+</script>
+</html>

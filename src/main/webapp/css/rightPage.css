@@ -1,0 +1,121 @@
+.right-page{
+	float: right;
+	width: 972px;
+	position: relative;
+}
+.right-page .innerbox{
+	min-height: 710px;
+	padding: 20px;
+	border: 1px solid #dddddd;
+	background: #FFF;
+}
+.hl-box{
+	width: 360px;
+	margin: 160px auto 0 auto;
+	text-align: center;
+}
+.hl-box .tit{
+	font-size: 20px;
+	color: #333;
+	margin:20px 0;
+}
+
+.hl-box p{
+	margin:20px 0;
+}
+.ft9{
+	color: #999;
+}
+.notEnabled1{
+	position: absolute;
+	top: 0;
+	left: 20px;
+	display: inline-block;
+	zoom: 1;
+	padding: 0 12px;
+	line-height: 30px;
+	height: 30px;
+	color: #FFF;
+	border-radius: 0 0 5px 5px;
+	background-color: #c3c8d1;
+}
+.notEnabled1 i{
+	background-position: -200px 0 !important;
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	margin-left: 8px;
+	width: 14px;
+	height: 14px;
+	background: url(../img/icon-all.png) no-repeat;
+	vertical-align: middle;
+}
+.i-htmlnone{
+	display: inline-block;
+	width: 70px;
+	height: 90px;
+	background: url(../img/htmlnone.png) no-repeat -10px;
+	background-size: auto 100px;
+}
+.icon-help {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 3px;
+    background: url(../img/icon-all.png) no-repeat;
+    background-position: 0 -60px;
+}
+a.linkBlue, a.linkBlue:hover {
+    color: #37618f;
+}
+.mt20 {
+    margin-top: 20px;
+}
+.textR {
+    text-align: right;
+}
+.tabTitle2 ul li a {
+    padding: 0 20px;
+}
+.tabTitle ul li a {
+    display: inline-block;
+    height: 40px;
+    line-height: 38px;
+    color: #808080;
+}
+.boxNone {
+    border: 1px solid #ddd;
+    border-left: 0;
+    border-right: 0;
+    padding: 85px 0;
+    text-align: center;
+}
+.mt30 {
+    margin-top: 30px;
+}
+.btn-add:hover {
+    color: #37618f;
+    background: #ebeff4;
+    text-decoration: none;
+}
+.btn-add {
+    color: #37618f;
+    background: #FFF;
+}
+.btn-add, .btn-in {
+    display: inline-block;
+    height: 40px;
+    padding: 0 16px;
+    line-height: 36px;
+    border: 2px solid #37618f;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.mr5 {
+    margin-right: 5px;
+}
+.q-tips {
+    display: inline-block;
+    *display: inline;
+    position: relative;
+}

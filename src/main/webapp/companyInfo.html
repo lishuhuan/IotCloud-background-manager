@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+    <title>
+        企业基本信息
+    </title>
+    <link href="lib/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/css/font-awesome.min.css" rel="stylesheet">
+    <script src="lib/js/jquery-2.1.4.min.js">
+    </script>
+    <script src="lib/js/jquery.form.min.js">
+    </script>
+    <script src="lib/js/bootstrap.min.js">
+    </script>
+    <script src="lib/js/jquery.noty.packaged.min.js">
+    </script>
+
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/main.js"></script>
+    <style type="text/css">
+        .mailfm{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class='header'>
+        <div class="grid h-top">
+            <font class="hfont">极动云开发者中心</font>
+            <div class="info fr clearfix">
+                <a href="#" class="a-style fl" id="main">首页</a>
+                <a href="#" class="a-style fl" id="developGuid">开发指引</a>
+                <a href="#" class="a-style fl hdselectid" id="joinUs">加入我们</a>
+                <a href="#" class="a-style fl" style="display:none" id="reg">登录/注册</a>
+                <div class="reg-style fr" id="reged"><img src="img/project.jpg" >jkuser0997</div>
+            </div>
+        </div> 
+    </div>
+    <div class="grid1">
+        <div class="left_list">
+             <ul>
+                <li style="background-color: #4C6794; color:#fff;">企业信息审核</li>
+                <li>
+                    <ul>
+                        <li style="background-color:#CED4DA;">企业信息</li>
+                        <li id="ToState">审核状态</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="right_list">
+            <div class="m_top">
+                <font>基本信息</font>
+            </div>
+            <form class="haha">
+                <div>
+                    <label for="cName">企业名称:</label>
+                    <input type="text" style="border:1px solid rgba(0,0,0,.3);outline:none; height:30px; line-height:30px; margin-left:40px; width:240px;" name="cName" id="cName"/>
+                </div>
+                <div>
+                    <label for="socialCode">机构代码:</label>
+                    <input type="text" style="border:1px solid rgba(0,0,0,.3);outline:none; height:30px; line-height:30px; margin-left:40px; width:240px;" name="socialCode" id="socialCode"/>
+                </div>
+                <div>
+                    <label for="cAddress">企业地址:</label>
+                    <input type="text" style="border:1px solid rgba(0,0,0,.3);outline:none; height:30px; line-height:30px; margin-left:40px; width:240px;" name="cAddress" id="cAddress"/>
+                </div>
+                <div>
+                    <label for="cIntro" class="vt">企业简介:</label>
+                    <textarea style="border:1px solid rgba(0,0,0,.3);outline:none; height:90px;margin-left:40px; width:240px;" name="cIntro" id="cIntro"></textarea>
+                </div>
+                <div>
+                    <label for="legalPerson">企业法人:</label>
+                    <input type="text" style="border:1px solid rgba(0,0,0,.3);outline:none; height:30px; line-height:30px; margin-left:40px; width:240px;" name="legalPerson" id="legalPerson"/>
+                </div>
+                <div>
+                    <label for="technicalPerson">开 发 者 :</label>
+                    <input type="text" style="border:1px solid rgba(0,0,0,.3);outline:none; height:30px; line-height:30px; margin-left:40px; width:240px;" name="technicalPerson" id="technicalPerson"/>
+                </div>
+                <div>
+                    <label for="cPhone">联系电话:</label>
+                    <input type="phone" style="border:1px solid rgba(0,0,0,.3);outline:none; height:30px; line-height:30px; margin-left:40px; width:240px;" name="cPhone" id="cPhone"/>
+                </div>
+
+            </form>
+            <input type="button" name="save" id="save" value="提交审核" style="width:245px; margin-left:350px; height:45px; line-height:45px; border:none; border-radius:8px; font-size:16px;">
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+var name    = "";
+var address = "";
+var intro   = "";
+var legalPerson = "";
+var phone   = "";
+var socialCode = "";
+var technicalPerson = "";
+var username = GetQueryString("phoneNumber");
+var Domain_Name = Domain_Name();
+    $('#ToState').click(function() {
+        /* Act on the event */
+        location.href="state.html";
+    });
+    $('#save').click(function() {
+        /* Act on the event */
+        name        = $('#cName').val();
+        address     = $('#cAddress').val();
+        intro       = $('#cIntro').val();
+        legalPerson = $('#legalPerson').val();
+        phone       = $('#cPhone').val();
+        socialCode  = $('#socialCode').val();
+        technicalPerson = $('#technicalPerson').val();
+        var r_phone = reg_phone(phone);
+        var r = confirm('是否确认提交？');
+        if (r == true) {
+            if (name.length>=2 && address && legalPerson && r_phone && technicalPerson && socialCode) {
+                $.ajax({
+                    url:Domain_Name+'/IotCloud-background-manager/rest/user/enterpriseInfo',
+                    //url: 'php/curl.php',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        username: username,
+                        companyName:name,
+                        companyAddress: address,
+                        companyInfo: intro,
+                        legalRepresentative: legalPerson,
+                        phoneNumber: phone,
+                        socialCode :socialCode,
+                        technicalPerson:technicalPerson
+                    },
+                    success:function(a){
+                        var data=eval(a);
+                        console.log(data);
+
+                    }
+                })
+                
+            }else if (name.length<2) {
+                alert("公司名称不能小于2位！");
+            }else if (!address) {
+                alert("公司地址不能为空！");
+            }else if (!legalPerson) {
+                alert("公司法人不能为空！");
+            }else if (!technicalPerson) {
+                alert("请填写开发者姓名！");
+            }else if (!socialCode) {
+                alert("请填写组织机构代码！");
+            } else {
+                alert("请输入正确的手机号码！");
+            }
+           //location.href="state.html"; 
+       }
+    });
+</script>
+</html>

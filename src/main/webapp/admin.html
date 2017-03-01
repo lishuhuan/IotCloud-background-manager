@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="./css/signin.css" rel="stylesheet">
+<link href="./css/custom-theme/jquery-ui-1.10.0.custom.css"
+	rel="stylesheet">
+<link type="text/css" href="http://cdn.bootcss.com/font-awesome/3.0.2/css/font-awesome.min.css" rel="stylesheet" />
+<link type="text/css" href="./css/jquery.dataTables.edit.css" rel="stylesheet">
+<link rel="stylesheet" href="./css/responsive-nav.css">
+
+<script src="./js/jquery-1.11.1.js"></script>
+<script src="./js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/admin.js"></script>
+<script src="./js/jquery.dataTables.js"></script>
+<script src="./js/responsive-nav.js"></script>
+
+<head>
+<meta charset="UTF-8">
+<title>管理员</title>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">IotClout云平台</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="homePage.html">产品与服务</a></li>
+            <li><a href="equipment.html">在线设备</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="active"><a href="admin.html" >管理员</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../navbar/">Default</a></li>
+            <li><a href="../navbar-static-top/">Static top</a></li>
+            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+    
+    <div>
+      <div class="row">
+        <div id="nav" role="navigation" class="col-sm-3 col-md-2 sidebar" style="margin-top: 40px;">
+          <ul class="nav nav-sidebar">
+            <li><a onclick="displayTab1()" style="cursor: pointer;">产品待审核</a></li>
+            <li><a onclick="displayTab2()" style="cursor: pointer;">产品审核通过</a></li>
+            <li><a onclick="displayTab3()" style="cursor: pointer;">未通过审核</a></li>
+            <li><a onclick="displayTab4()" style="cursor: pointer;">在线设备列表</a></li>
+          </ul>
+        
+        </div>
+        <div id="tab1" name="tab" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="position: absolute;margin-top: 20px;display: none;">
+        
+
+          <h2 class="sub-header">待审核产品</h2>
+          <div class="table-responsive">
+            <table id="auditlist" class="table table-striped">
+              <thead>
+                <tr>
+                  <th>公司名称</th>
+                  <th>产品类型</th>
+                  <th>产品名称</th>
+                  <th>产品型号</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+           
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+       <div id="tab2" name="tab" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="position: absolute;margin-top: 20px;display: none;">
+        
+
+          <h2 class="sub-header">审核已通过</h2>
+          <div class="table-responsive">
+            <table id="auditAccess" class="table table-striped">
+              <thead>
+                <tr>
+                  <th>公司名称</th>
+                  <th>产品类型</th>
+                  <th>产品名称</th>
+                  <th>产品型号</th>
+                  <th>设备接入方式</th>
+                  <th>设备联网方式</th>
+                  <th>支持的操作系统</th>
+                  <th>RAM大小</th>
+                  <th>ROM大小</th>
+                  <th>功能描述</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+           
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div id="tab3" name="tab" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="position: absolute;margin-top: 20px;display: none;">
+        
+
+          <h2 class="sub-header">审核未通过</h2>
+          <div class="table-responsive">
+            <table id="auditNotAccess" class="table table-striped">
+              <thead>
+                <tr>
+                  <th>公司名称</th>
+                  <th>产品类型</th>
+                  <th>产品名称</th>
+                  <th>产品型号</th>
+                  <th>设备接入方式</th>
+                  <th>设备联网方式</th>
+                  <th>支持的操作系统</th>
+                  <th>RAM大小</th>
+                  <th>ROM大小</th>
+                  <th>功能描述</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+           
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <div id="tab4" name="tab" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="position: absolute;margin-top: 20px;display: none;">
+          <select id="productType" style="width: 100px;height: 30px;margin-top: 10px;margin-left: 10px;">
+                              <option value="0">请选择产品名称</option>
+         </select>
+         <input type="button" onclick="findDevice()" value="确定"/><br>
+
+          <h2>在线设备列表</h2>
+          <div class="table-responsive">
+            <table id="devicelist" class="table table-striped">
+              <thead>
+                <tr>
+                  <th>产品编号</th>
+                  <th>产品名称</th>
+                  <th>更新日期</th>
+                  <th>操作日期</th>
+                  <th>状态</th>
+                </tr>
+              </thead>
+              <tbody>
+           
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    
+    <div id="auit" title="审核产品" style="display: none">
+		<div style="overflow:auto;">
+		   <label>公司名称：</label>
+		   <label id="company"></label>
+		   <label style="margin-left: 50px;">产品类型：</label>
+		   <label id="type"></label><br>
+		    <label>产品名称：</label>
+		   <label id="productName"></label>
+		   <label style="margin-left: 50px;">产品型号：</label>
+		   <label id="model"></label><br>
+		   <label>设备接入方式：</label>
+		   <label id="assess"></label>
+		   <label style="margin-left: 50px;">设备联网方式：</label>
+		   <label id="net"></label><br>
+		   <label>RAM大小：</label>
+		   <label id="ram"></label>
+		   <label style="margin-left: 50px;">ROM大小：</label>
+		   <label id="rom"></label><br>
+		    <label>支持的操作系统：</label>
+		   <label id="oprate"></label>
+		    <label style="margin-left: 50px;">申请时间：</label>
+		   <label id="auditTime"></label><br>
+		   <label>功能描述：</label>
+		   <label id="description"></label><br>
+		   <label id="registerId" style="display: none;"></label><br>
+		   <input id="accept" type="button" onclick="acceptIt()" value="通过"/>
+		   <input id="reject" type="button" onclick="rejectIt()" value="拒绝"/>
+		   <input id="close" type="button" value="取消"/>
+			
+		</div>
+	</div>
+</body>
+</html>

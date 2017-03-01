@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+    <title>
+        企业基本信息
+    </title>
+    <link href="lib/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/css/font-awesome.min.css" rel="stylesheet">
+    <script src="lib/js/jquery-2.1.4.min.js">
+    </script>
+    <script src="lib/js/jquery.form.min.js">
+    </script>
+    <script src="lib/js/bootstrap.min.js">
+    </script>
+    <script src="lib/js/jquery.noty.packaged.min.js">
+    </script>
+
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/main.js"></script>
+    <style type="text/css">
+        .mailfm{
+            display: none;
+        }
+    </style>
+    <!-- <script type="text/javascript">
+        $.ajax({
+            url: '/path/to/file',
+            type: 'POST',
+            dataType: 'json',
+            data: {param1: 'value1'},
+        })
+        .done(function(data) {
+            console.log("success");
+        })
+        .fail(function() {
+            console.log("error");
+        })
+        .always(function() {
+            console.log("complete");
+        });
+        
+    </script> -->
+</head>
+<body>
+    <div class='header'>
+        <div class="grid h-top">
+            <font class="hfont">极动云开发者中心</font>
+            <div class="info fr clearfix">
+                <a href="#" class="a-style fl" id="main">首页</a>
+                <a href="#" class="a-style fl" id="developGuid">开发指引</a>
+                <a href="#" class="a-style fl hdselectid" id="joinUs">加入我们</a>
+                <a href="#" class="a-style fl" id="reg">登录/注册</a>
+            </div>
+        </div> 
+    </div>
+    <div class="grid1">
+        <div class="left_list">
+             <ul>
+                <li style="background-color: #4C6794; color:#fff;">企业信息审核</li>
+                <li>
+                    <ul>
+                        <li id="qyinfo">企业信息</li>
+                        <li style="background-color:#CED4DA;">审核状态</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="right_list">
+            <div class="state_1">
+                <font>待审核...</font><font>提交时间:</font><font>2016-7-5 10:47:00</font><a href="companyInfo.html">查看/修改</a>
+            </div>
+            <div class="state_2">
+                <font>已审核</font><font>审核时间:</font><font>2016-7-5 10:47:00</font><a href="companyInfo.html">查看</a>
+                <br><br>
+                <font>开发者帐号：</font><font>develop_id******</font><br>
+                <font>开发者密钥：</font><font>develop_key*****</font><br>
+            </div>
+            <div class="state_3">
+                <font>无待审核项</font><a href="companyInfo.html">提交审核信息</a>
+            </div>
+            <div class="state_4">
+                <font>审核未通过</font><font>未通过原因:</font><font>企业信息有误。</font><a href="companyInfo.html">修改</a>
+            </div>
+            状态预览：<a href="javascript:wait()">待审核</a>|<a href="javascript:end()">已审核</a>|<a href="javascript:notPass()">审核未通过</a>|<a href="javascript:none()">无审核</a>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    function wait(){
+        $(".right_list > div").hide('fast', function() {
+            $('.state_1').show('fast');
+        });
+    }
+    function end(){
+        $(".right_list div").hide('fast', function() {
+            $('.state_2').show('fast');
+        });
+    }
+    function none(){
+        $(".right_list div").hide('fast', function() {
+            $('.state_3').show('fast');
+        });
+    }
+    function notPass(){
+        $(".right_list div").hide('fast', function() {
+            $('.state_4').show('fast');
+        });
+    }
+    $('#qyinfo').click(function() {
+        location.href="companyInfo.html";
+    });
+</script>
+</html>

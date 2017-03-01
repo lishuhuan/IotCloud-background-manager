@@ -1,0 +1,182 @@
+.inbox{
+	padding: 20px;
+	border: 1px solid rgba(0,0,0,.1);
+}
+.top_search{
+	width: 100%;
+	background-color: #fff;
+	height: 75px;
+	padding: 14px 0;
+	border-bottom: 1px solid rgba(0,0,0,.1);
+}
+input[name = search_project]{
+	height: 40px;
+	float: left;
+	padding:5px;
+	margin-right: 20px;
+}
+input[name = searchbtn]{
+	float: left;
+	height: 40px;
+	line-height: 40px;
+	color: #fff;
+	background-color: #343F6A;
+	padding:0 10px;	
+}
+input[name = add_new]{
+	float: right;
+	height: 40px;
+	line-height: 40px;
+}
+
+.released font:nth-child(1){
+	font-size: 22px;
+	color: #2980B9;
+	font-weight: 600;
+	margin-right: 10px;
+	line-height: 30px;
+}
+.released font:nth-child(2){
+	font-size: 16px;
+	color: #2980B9;
+	line-height: 30px;
+}
+.noreleased font:nth-child(1){
+	font-size: 22px;
+	color: #808080;
+	font-weight: 600;
+	margin-right: 10px;
+	line-height: 30px;
+}
+.noreleased font:nth-child(2){
+	font-size: 16px;
+	color: #808080;
+	line-height: 30px;
+}
+.project_info{
+	height: 215px;
+	padding: 10px;
+	background: #fff;
+	float: left;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	margin-top:10px;
+	position: relative;
+}
+.project_info img:nth-child(1){
+	height: 195px;
+	float: left;
+	margin-right: 15px;
+}
+.project_info .info{
+	float: left;
+	padding-top: 50px;
+	width: 200px;
+	overflow: hidden;
+}
+.project_info .info p{
+	line-height: 35px;
+	margin: 0;
+}
+.project_info .info p:nth-child(1){
+	font-size: 20px;
+	color: #2980B9;
+}
+.project_info .info p:nth-child(2) span{
+	border:none;
+	border-radius: 8px;
+	background-color: #DDDDDD;
+	color: #fff;
+	font-size: 16px;
+	padding: 2px 10px;
+	margin-right: 10px;
+}
+.project_info .info p:nth-child(3) span{
+	border-radius: 5px;
+	border:1px solid rgba(0,0,0,.6);
+	font-size: 14px;
+	padding: 2px 8px;
+	color: rgba(0,0,0,.6);
+	margin-right: 10px;
+}
+.project_info .info p:nth-child(4) span{
+	border-radius: 5px;
+	border:1px solid rgba(0,0,0,.6);
+	font-size: 14px;
+	padding: 2px 8px;
+	color: rgba(0,0,0,.6);
+	margin-right: 10px;
+}
+.project-state{
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 3px 10px;
+	color: #fff;
+	font-size: 14px;
+}
+.cannot{
+	background-color: #C3C8D1;
+}
+.can{
+	background-color: #46B050;
+}
+.delthis{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	padding: 2px 5px;
+	color: #fff;
+	background-color: #C81522;
+	display: none;
+	cursor:pointer;
+}
+
+.h-top2{
+	width: 100%;
+	background-color: #fff;
+	height: 75px;
+	padding: 12px 0;
+	border-bottom: 1px solid rgba(0,0,0,.1);
+}
+.top-little-pic{
+	width:50px; 
+	height: 50px; 
+	float:left; 
+	border:1px solid rgba(0,0,0,.1); 
+	margin-right:20px;
+}
+.tabTitle {
+    height: 40px;
+    border-bottom: 1px solid #dddddd;
+}
+.tabTitle2 {
+    margin-top: 20px;
+}
+.tabTitle ul li a:hover, .tabTitle ul li a.cur, .tabTitle ul li a.cur:hover {
+    height: 38px;
+    border-bottom: 2px solid #37618f;
+    color: #315780;
+    text-decoration: none;
+}
+.tabTitle2 ul li a {
+    padding: 0 20px;
+}
+.tabTitle ul li a {
+    display: inline-block;
+    height: 40px;
+    line-height: 38px;
+    color: #808080;
+}
+.tabTitle ul li {
+    position: relative;
+    float: left;
+    font-size: 16px;
+    margin-right: 26px;
+}
+.bar .t-right1 {
+    float: right;
+}
+.bar .t-left1 {
+    float: left;
+}

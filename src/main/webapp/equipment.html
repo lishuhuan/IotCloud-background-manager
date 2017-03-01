@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="./css/signin.css" rel="stylesheet">
+<link href="./css/custom-theme/jquery-ui-1.10.0.custom.css"
+	rel="stylesheet">
+<link href="./css/common.css" rel="stylesheet">
+
+<link type="text/css" href="http://cdn.bootcss.com/font-awesome/3.0.2/css/font-awesome.min.css" rel="stylesheet" />
+<link type="text/css" href="./css/jquery.dataTables.edit.css" rel="stylesheet">
+
+<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
+<script src="./js/jquery-1.11.1.js"></script>
+<script src="./js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/jquery.dataTables.js"></script>
+<script src="./js/equipment.js"></script>
+<head>
+<meta charset="UTF-8">
+<title>在线设备</title>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">IotClout云平台</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="homePage.html">产品与服务</a></li>
+            <li class="active"><a href="equipment.html">在线设备</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="admin.html" >管理员</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../navbar/">Default</a></li>
+            <li><a href="../navbar-static-top/">Static top</a></li>
+            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <div style="background-color: white; height: 900px;">
+    <div class="productLi">
+          <p style="margin-top: 30px;">云平台接入服务</p>
+          <ul class="nav nav-sidebar">
+          <li><a onclick="showProduct()" style="cursor: pointer;">产品列表</a></li>
+
+          </ul>
+        
+      
+    </div>
+    
+    <div style="width: 80%;height: 900px;float: right;margin-top: 30px;">
+         <p style="font-weight: bold;">产品列表</p>
+         <input type="button" value="添加产品" onclick="addProduct()" style="float: right;margin-right: 150px;"/>
+         <div id="equipment"> </div>
+    </div>
+    
+</div>
+
+<div id="productInfo" title="填写产品信息" style="display: none">
+		<div>
+			<label>公司名称：</label> 
+			<input type="text" id="company" />	<br>
+			<label>产品类型：</label> 
+			 <select id="productType" style="width: 100px;height: 30px;margin-top: 10px;margin-left: 10px;">
+                              <option value="0">请选择类型</option>
+              </select>	<br>
+	
+			<label>产品名称：</label> 
+			<input type="text" id="productName" /> <br>
+			<label>产品型号：</label> 
+			<input type="text" id="model" /> <br><br>
+			<label>产品接入方式：</label> 
+			<input type="text" id="access" /> <br>
+			<label>产品联网方式：</label> 
+			<input type="text" id="network" /><br>
+			<label>支持的操作系统：</label> 
+			<input type="text" id="os" />	<br>
+			<label>设备物联类型：</label> 
+			<select id="iotType" style="width: 100px;height: 30px;margin-top: 10px;margin-left: 10px;">
+                              
+                              <option value="0">庆科</option>
+                              <option value="1">乐鑫</option>
+            </select>	<br>
+			<label>长/短连接：</label>
+			<select id="connectType" style="width: 100px;height: 30px;margin-top: 10px;margin-left: 10px;">
+                              
+                              <option value="0">短连接</option>
+                              <option value="1">长连接</option>
+            </select>	<br>
+			<label>支持RAM大小：</label> 
+			<input type="text" id="ram" />	<br>
+			<label>支持ROM大小：</label> 
+			<input type="text" id="rom" />	<br>
+			<label>产品功能描述：</label> 
+			<input type="text" id="function" />	<br>
+			
+			<button  type="button" onclick="product()">产品注册</button>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>首页</title>
+
+<script src="./js/jquery-1.11.1.js"></script>
+<script type="text/javascript">
+	function getParam(){
+		var key=$("#key").val();
+		var sn=$("#sn").val();
+		$.ajax({
+			"type" : 'post',
+			"url" : "/v1/function/getQrcodeByDeviceKey",
+			"dataType" : "text",
+			"data":{
+				"sn":sn,
+				"key":key
+			},
+			success : function(data) {
+				$("#result").val(data);
+			}
+		})
+	}
+</script>
+
+</head>
+<body>
+<label>deviceKey:</label>
+<input id="key" type="text"/><br><br>
+<label>mac/sn:</label>
+<input id="sn" type="text" style="margin-left: 22px;"/>
+<input type="button" value="生成" onclick="getParam()"/><br>
+<textarea id="result" rows="10" cols="40" style="margin-top: 20px;"></textarea>
+</body>
+</html>

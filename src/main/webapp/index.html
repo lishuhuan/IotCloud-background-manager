@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta http-equiv="Content-Type"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+    <title>
+        注册登录
+    </title>
+    <link href="lib/css/bootstrap.min.css" rel="stylesheet">
+    <link href="lib/css/font-awesome.min.css" rel="stylesheet">
+    <script src="lib/js/jquery-2.1.4.min.js">
+    </script>
+    <script src="lib/js/jquery.form.min.js">
+    </script>
+    <script src="lib/js/bootstrap.min.js">
+    </script>
+
+    <link href="css/style.css" rel="stylesheet">
+    <style type="text/css">
+        .mailfm{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class='header'>
+        <div class="grid h-top">
+            <font class="hfont">极动云开发者中心</font>
+            <div class="info fr clearfix">
+                <a href="#" class="a-style fl" id="main">首页</a>
+                <a href="#" class="a-style fl" id="developGuid">开发指引</a>
+                <a href="#" class="a-style fl" id="joinUs">加入我们</a>
+                <a href="#" class="a-style fl hdselectid" id="reg">登录/注册</a>
+            </div>
+        </div> 
+    </div>
+    <div class="grid regMain" style="margin-top:60px; position:relative">
+    <div style="margin:auto 300px;">
+        <div>
+        <a href="#">个人注册 </a><font style="padding:5px;">|</font><a href="#" class="aselected"> 企业注册</a>
+        </div>
+        <br>
+<!-- 手机注册 -->
+        <form action="#" method="post" class="regfm">
+            <div>
+                <label class="fl" for="phone">手机号:</label>
+                <div class="inputBox fl">   
+                <input type="text" value=" +86" style="border:0;outline:none; height:25px; line-height:25px; float:left; width:40px;margin-top: 2px; background-color: rgba(255,255,255,.0); ">|
+                    <input type="phone" style="border:0;outline:none; height:25px; line-height:25px; background-color: rgba(255,255,255,.0); " name="phone" id="phone" value=""/>
+                </div>
+                <!-- <a href="javascript:regByEmail()" style="margin-left:20px;">邮箱注册</a> -->
+            </div>
+            <div class="cb" style="height:30px;"></div>
+            <div id="regSign">
+                <label class="fl" for="regcode">验证码:</label>
+                <input type="text" style="border:1px solid rgba(0,0,0,.3);outline:none; height:30px; line-height:30px; margin-left:40px; width:120px; " disabled="disabled" name="regcode" id="regcode"/>
+                <input type="button" style="margin-left:20px; width:100px; " id="getRegCode" value="获取验证码">
+            </div>
+            
+            <div class="fc">
+                <input type="button" style="width:240px; margin-top:35px; margin-bottom:40px;" value="下一步" id="nextPage">
+                <a href="sign.html">已有帐号？马上登录</a>
+            </div>
+        </form>
+
+<!-- 邮箱注册 -->
+        <!-- <form action="#" method="post" class="mailfm">
+            <div>
+                <label class="fl" for="phone">邮 &nbsp; 箱 :</label>
+                <div class="inputBox fl">   
+                    <input type="email" style="border:0;outline:none; height:25px; line-height:25px; background-color: #F5F5F5; " name="mail" id="mail" value=""/>
+                </div>
+                <a href="javascript:regByPhone()" style="margin-left:20px;">手机注册</a>
+            </div>
+            <div class="cb" style="height:30px;"></div>
+            
+            <div class="fc">
+                <input type="button" style="width:240px; margin-bottom:40px; margin-left:86px;" value="下一步" id="nextPage">
+                <a href="sign.html">已有帐号？马上登录</a>
+            </div>
+        </form>-->
+        </div>
+    </div>
+
+<!-- 图片验证 -->
+    <div class="alertBox-bg"></div>
+    <div class="alertBox" style="margin-top:-130px; margin-left:-230px;">
+        <h3>验证</h3>
+        <span class="alertBox-exit" onclick="javascript:alertBox_exit()"></span>
+        <div class="alertBox-body">
+            <dl style="margin:0;">请输入右图数字：<input type="text" name="rg111" id="rg111" style="width:120px; margin:0 30px;">
+                <img src="" alt="验证码" id="regcodeImg" style="width:80px; ">
+            </dl>
+            <a href="javascript:reimg()" style="position:absolute;right:20px;">看不清，换一张</a>
+        </div>
+        <div class="alertBox-btnBar">
+            <span class="alertBox-btn btn-blue" onclick="javascript:sure()">确认</span>
+        </div>
+    </div>
+</body>
+<script src="js/main.js"></script>
+<script type="text/javascript">
+var nb="";
+var Domain_Name = Domain_Name();
+    $('#getRegCode').click(function() {
+        /*获取验证码部分交互代码
+        ajax请求*/
+       var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1})|(16[0-9]{1})|(19[0-9]{1}))+\d{8})$/;
+        if (!myreg.test($("#phone").val())) {
+            alert('请输入有效的手机号码！');
+        }else{
+            reimg();
+            alertBox_open(); 
+        }
+    });
+    function reimg(){
+        nb =Math.ceil(Math.random()*8);
+        var img = document.getElementById("regcodeImg");  
+        img.src = "img/test" + nb +".png";
+    }
+
+
+    $("#nextPage").click(function() {
+        /* ajax请求代码待添加，请求成功后跳转 */
+        var phoneNumber = $('#phone').val();
+        var verifyCode  = $('#regcode').val();
+        $.ajax({
+            url: Domain_Name+'/IotCloud-background-manager/rest/user/vertifyMessage',
+            //url:'php/curl.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                phoneNumber: phoneNumber,
+                verifyCode: verifyCode
+            },
+            success:function(a){
+                var data = eval(a);
+                console.log(data);
+                if (data.result_code==0) {
+                    location.href = "reg2.html?phoneNumber="+phoneNumber;
+                }else {
+                    alert('请求失败');
+                }
+            }
+        })
+        
+
+
+        //location.href="reg2.html";
+    });
+
+    $('.regMain > div > div>a').click(function() {
+        $('.regMain > div a').removeClass('aselected');
+        $(this).addClass('aselected');
+    });
+
+    // function regByEmail(){
+    //     $('.regfm').hide('fast',function(){
+    //         $('.mailfm').show('fast');
+    //     });
+    // }
+
+    // function regByPhone(){
+    //     $('.mailfm').hide('fast',function(){
+    //         $('.regfm').show('fast');
+    //     });
+    // }
+    var countdown=60; 
+function settime(obj) { 
+    if (countdown == 0) { 
+        obj.removeAttr("disabled");    
+        obj.val("重新发送"); 
+        countdown = 60; 
+        return;
+    } else { 
+        countdown--; 
+        obj.attr("disabled", true);
+        obj.val("重新发送(" + countdown + ")"); 
+    } 
+    setTimeout(function() { 
+        settime(obj) }
+        ,1000) 
+}
+
+function sure(){
+    var inputNum = $('#rg111').val();
+    var result = yanzheng(inputNum);
+    var phone = $("#phone").val();
+    if (result == 1) {
+        //判断成功，ajax发送请求
+        $.ajax({
+            url: Domain_Name+'/IotCloud-background-manager/rest/user/message',
+            //url: 'php/curl.php',
+            type: 'POST',
+            dataType: 'json',
+            data: {phoneNumber: phone},
+            success:function(a){
+                var data = eval(a);
+                console.log(data);
+                if (data.result_code ==0) {
+                    settime($('#getRegCode'));  
+                    $('#regcode').removeAttr('disabled');
+                    alertBox_exit();
+                }
+            }
+        })
+
+    }else{
+        alert('验证码输入错误');
+    }
+}
+</script>
+</html>

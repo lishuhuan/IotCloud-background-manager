@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link href="./css/signin.css" rel="stylesheet">
+<link href="./css/custom-theme/jquery-ui-1.10.0.custom.css"
+	rel="stylesheet">
+<link type="text/css" href="./css/jquery.dataTables.edit.css" rel="stylesheet">
+<link href="./css/common.css" rel="stylesheet">
+
+<link type="text/css" href="http://cdn.bootcss.com/font-awesome/3.0.2/css/font-awesome.min.css" rel="stylesheet" />
+<link type="text/css" href="./css/jquery.dataTables.edit.css" rel="stylesheet">
+
+<script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
+<script src="./js/jquery-1.11.1.js"></script>
+<script src="./js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="./js/bootstrap.min.js"></script>
+<script src="./js/jquery.dataTables.js"></script>
+<script src="./js/equipmentList.js"></script>
+<head>
+<meta charset="UTF-8">
+<title>在线设备</title>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand">IotClout云平台</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="homePage.html">产品与服务</a></li>
+            <li class="active"><a href="equipment.html">在线设备</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="admin.html" >管理员</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../navbar/">Default</a></li>
+            <li><a href="../navbar-static-top/">Static top</a></li>
+            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    
+     <div style="background-color: white; height: 900px;">
+     <div class="productLi">
+          <p style="margin-top: 30px;">云平台接入服务</p>
+          <ul class="nav nav-sidebar">
+          <li><a onclick="showEquipment()" style="cursor: pointer;">在线设备</a></li>
+          <li><a onclick="attribution()" style="cursor: pointer;">数据点</a></li>
+
+          </ul>
+        
+      
+    </div>
+    
+    <div id="tab1" name="tab" style="width: 80%;height: 900px;float: right;margin-top: 30px;display: none;">
+    <div style="float: right;">
+    <input type="button" value="生成license" onclick="licenseBox()" style="margin-right: 150px;"/> <br>
+    <textarea id="licenseText" disabled="disabled" style="width: 300px;height: 100px;margin-right: 30px;display: none;"></textarea>  
+    </div>
+    <label id="productTitle"></label>
+
+    <div style="margin-top: 30px;">
+    <table id="equipmentLi" class="table table-striped" style="margin-left: 0px;border: 0;border-style:none;text-align: left !important;">
+              <thead>
+                <tr>
+                  <th>设备</th>
+                  <th>基本信息</th>
+
+
+                </tr>
+              </thead>
+              <tbody>
+           
+              </tbody>
+            </table>
+    
+    </div>
+    </div>
+    
+   
+    
+    <div id="tab2" name="tab" style="width: 80%;height: 900px;float: right;margin-top: 30px;display: none;">
+    <label>设备数据点</label>
+    <input type="button" value="新增数据点" onclick="addAttr()" style="float: right;margin-right: 150px;"/>
+    <div style="margin-top: 30px;">
+    <table id="attributeList" class="table table-striped" style="margin-left: 0px;border: 0;border-style:none;text-align: left !important;">
+              <thead>
+                <tr>
+                  <th>名称</th>
+                  <th>标识名</th>
+                  <th>读写类型</th>
+                  <th>数据类型</th>
+                  <th>备注</th>
+                  <th>操作</th>
+
+
+                </tr>
+              </thead>
+              <tbody>
+           
+              </tbody>
+            </table>
+    
+    </div>
+    </div>
+     
+     </div>
+     
+     
+   <div id="addAttribute" title="添加数据点" style="display: none">
+   <label>标识名</label>
+   <input type="text" id="name" style="margin-left: 30px;"/><br>
+   
+   <label>描述信息</label>
+   <input type="text" id="description" style="margin-left: 30px;"/><br>
+   
+   <label>读写类型</label>
+   <select id="opType"  style="width: 100px;height: 30px;margin-left: 30px;">
+                              <option value="1">只读</option>
+                              <option value="2">可写</option>
+   </select>	<br>
+   <label>数据类型</label>
+   <select id="dataType" style="width: 100px;height: 30px;margin-left: 30px;">
+                              <option value="0">有符号整型</option>
+                              <option value="1">无符号整型</option>
+                              <option value="2">布尔型</option>
+                              <option value="3">字符串</option>
+                              <option value="4">小数</option>
+                              <option value="5">时间</option>
+                              <option value="6">枚举</option>
+   </select>	<br>
+   <div id="integer" name="statu">
+   <label>数据范围</label>
+   <input type="text" id="minNum" value="最低取值" style="margin-left: 30px;"/>--
+   <input type="text" id="maxNum" value="最高取值" /></div>
+   
+   <div id="string" name="statu" style="display: none;">
+   <label>长度范围</label>
+   <input type="text" id="minString" value="最低长度" style="margin-left: 30px;"/>--
+   <input type="text" id="maxString" value="最高长度" /></div>
+   
+   <div id="decimal" name="statu" style="display: none;">
+   <label>最大小数位</label>
+   <input type="text" id="maxDecimal" style="margin-left: 30px;"/></div>
+   
+   <div id="time" name="statu" style="display: none;">
+   <label>时间范围</label>
+    <select id="timeType" style="width: 100px;height: 30px;margin-left: 30px;">
+                              <option value="1">精确到日</option>
+                              <option value="2">精确到秒</option>
+ 
+                              <option value="3">只有小时和分钟</option>
+                              <option value="4">只有小时、分、秒</option>
+ 
+                 
+   </select>	<br>
+    <input type="text" value="起止时间" id="minTime" style="margin-left: 65px;" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" clientidmode="Static"/>--
+    <input type="text" value="截止时间" id="maxTime" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" clientidmode="Static"/></div>
+    
+    <div id="enum" name="statu" style="display: none;">
+   <label>内容</label>
+   <input type="text" id="enumContent" style="margin-left: 30px;width: 300px;"/></div>
+   
+    <label>备注</label>
+   <input type="text" id="content" style="margin-left: 30px;"/><br>
+   
+   <input type="button" value="确定" id="confirm"/>
+</div>
+
+
+<div id="editAttribute" title="编辑数据点" style="display: none">
+   <label>标识名</label>
+   <input type="text" id="editName" style="margin-left: 30px;"/><br>
+   
+   <label>描述信息</label>
+   <input type="text" id="editDescription" style="margin-left: 30px;"/><br>
+   
+   <label>读写类型</label>
+   <select id="editOpType"  style="width: 100px;height: 30px;margin-left: 30px;">
+                              <option value="1">只读</option>
+                              <option value="2">可写</option>
+   </select>	<br>
+   <label>数据类型</label>
+   <select id="editDataType" style="width: 100px;height: 30px;margin-left: 30px;">
+                              <option value="0">有符号整型</option>
+                              <option value="1">无符号整型</option>
+                              <option value="2">布尔型</option>
+                              <option value="3">字符串</option>
+                              <option value="4">小数</option>
+                              <option value="5">时间</option>
+                              <option value="6">枚举</option>
+   </select>	<br>
+   <div id="editInteger" name="editStatu">
+   <label>数据范围</label>
+   <input type="text" id="editMinNum" value="最低取值" style="margin-left: 30px;"/>--
+   <input type="text" id="editMaxNum" value="最高取值" /><br>
+   <label>分辨率</label>
+   <input type="text" id="resolving" style="margin-left: 30px;"/><br>
+    <label>增量</label>
+   <input type="text" id="increment" style="margin-left: 30px;"/>
+   </div>
+   
+   <div id="editString" name="editStatu" style="display: none;">
+   <label>长度范围</label>
+   <input type="text" id="editMinString" value="最低长度" style="margin-left: 30px;"/>--
+   <input type="text" id="editMaxString" value="最高长度" /></div>
+   
+   <div id="editDecimal" name="editStatu" style="display: none;">
+   <label>最大小数位</label>
+   <input type="text" id="editMaxDecimal" style="margin-left: 30px;"/></div>
+   
+   <div id="editTime" name="editStatu" style="display: none;">
+   <label>时间范围</label>
+    <select id="editTimeType" style="width: 100px;height: 30px;margin-left: 30px;">
+                              <option value="1">精确到日</option>
+                              <option value="2">精确到秒</option>
+ 
+                              <option value="3">只有小时和分钟</option>
+                              <option value="4">只有小时、分、秒</option>
+ 
+                 
+   </select>	<br>
+    <input type="text" value="起止时间" id="editMinTime" style="margin-left: 65px;" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" clientidmode="Static"/>--
+    <input type="text" value="截止时间" id="editMaxTime" onClick="WdatePicker({dateFmt:'yyyy-MM-dd'})" clientidmode="Static"/></div>
+    
+    <div id="editEnum" name="editStatu" style="display: none;">
+   <label>内容</label>
+   <input type="text" id="editEnumContent" style="margin-left: 30px;width: 300px;"/></div>
+   
+    <label>备注</label>
+   <input type="text" id="editContent" style="margin-left: 30px;"/><br>
+   
+   <input type="button" value="确定" id="editAction"/>
+</div>
+
+<div id="licenseBox" title="生成license" style="display: none">
+     <label>设备SN</label>
+   <input type="text" id="productSn" style="margin-left: 30px;"/><br>
+   
+   <input type="button" value="确定" id="addLicense"/>
+</div>
+
+
+
+    
+</body>
+</html>
